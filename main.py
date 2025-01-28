@@ -13,6 +13,9 @@ class Player:
             
     def getName(self):
         return self.name
+    
+    def getLives(self):
+        return self.lives
 
 def generateShells():
     blanks = random.randint(1, 6)
@@ -61,4 +64,17 @@ print(shoot())
 print(showShells(shellList))
 
 # Main game loop
-
+ongoing = player1.getLives() > 0 and player2.getLives() > 0
+while ongoing:
+    # Player one 
+    choice = 1
+    while choice == 1:
+        print(player1.getName() + "....")
+        print("(Shoot yourself)[1]")
+        print("(Shoot "+player2.getName()+")[2]")
+        print()
+        try:
+            choice = int(input(">"))
+        except:
+            choice = 1
+    print("----------")
